@@ -27,7 +27,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 
 	public int hash(K key) {
 		int hash = key.hashCode();
-		return Math.abs((a * hash + b) % p) % maxSize;
+		return (Math.abs((a * hash + b) % p) % maxSize);
 	}
 
 	static int nextPrime(int N) {
@@ -149,6 +149,17 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
 	@Override
 	public ILista<V> valueSet() {
 		return values;
+	}
+	
+	@Override
+	public String toString() {
+		String res = "";
+		for (int i = 0; i < elements.size(); i++) {
+			if (elements.getElement(i).toString() != "") {
+				res += "" + i + " " + elements.getElement(i);
+			}
+		}
+		return res;
 	}
 
 }

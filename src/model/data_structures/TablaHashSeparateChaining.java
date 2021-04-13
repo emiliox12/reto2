@@ -1,5 +1,9 @@
 package model.data_structures;
 
+import java.util.Comparator;
+
+import model.utils.Ordenamiento;
+
 public class TablaHashSeparateChaining<K extends Comparable<K>, V extends Comparable<V>>
 		implements ITablaSimbolos<K, V> {
 
@@ -26,14 +30,14 @@ public class TablaHashSeparateChaining<K extends Comparable<K>, V extends Compar
 		this.size = 0;
 		a = (int) (Math.random() * (maxSize + 1));
 		b = (int) (Math.random() * (maxSize + 1));
-		for (int i = 0; i < maxSize; i++) {
+		for (int i = 0; i <= maxSize; i++) {
 			elements.addLast(new ArregloDinamico<NodoTS<K, V>>(maxSize));
 		}
 	}
 
 	public int hash(K key) {
 		int hash = key.hashCode();
-		return (Math.abs((a * hash + b) % p) % maxSize);
+		return (Math.abs((a * hash + b) % p) % maxSize) -1;
 	}
 
 	static int nextPrime(int N) {
@@ -70,6 +74,7 @@ public class TablaHashSeparateChaining<K extends Comparable<K>, V extends Compar
 		NodoTS<K, V> newNode = new NodoTS<>(key, value);
 		int pos = hash(key);
 		ILista<NodoTS<K, V>> subList = elements.getElement(pos);
+		if (subList == null) {return;}
 		subList.addLast(newNode);
 		size++;
 	}
@@ -128,7 +133,7 @@ public class TablaHashSeparateChaining<K extends Comparable<K>, V extends Compar
 		String res = "";
 		for (int i = 0; i < elements.size(); i++) {
 			if (elements.getElement(i).toString() != "") {
-				res += "" + i + elements.getElement(i);
+				res += "" + i + " " + elements.getElement(i);
 			}
 		}
 		return res;

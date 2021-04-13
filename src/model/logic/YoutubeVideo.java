@@ -241,7 +241,7 @@ public class YoutubeVideo implements Comparable<YoutubeVideo> {
 
 	@Override
 	public String toString() {
-		return views + " / " + likes + " / " + title;
+		return views +  " / " + trendingDays + " / " + likes + " / " + title;
 		// return trending_date + " / " + likes + " / " + title + " / " + channel_title
 		// + " / " + publish_time + " / "
 		// + views + " / " + dislikes;

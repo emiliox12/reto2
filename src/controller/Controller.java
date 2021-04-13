@@ -50,26 +50,28 @@ public class Controller {
 				view.printMessage(res);
 				break;
 			case 2:
-				view.printMessage("--------- \nVideos trending por país y categoría: \nnombre de la categoría?");
-				category_name = lector.next();
-				view.printMessage("--------- \nnombre del país?");
+				view.printMessage("--------- \nVideo Trending de país: \nnombre del país?");
 				country = lector.next();
-				view.printMessage("--------- \nnumero de registros?");
-				n = lector.next();
-				System.out.println(category_name + " " + country + " " + Integer.parseInt(n));
-				res = modelo.req1(category_name, country, Integer.parseInt(n));
+				System.out.println(country);
+				res = modelo.req2(country);
 				view.printMessage(res);
 				break;
 
 			case 3:
-				view.printMessage("--------- \nBusequdas Aleatoias Separate chaining?");
-				res = modelo.req3();
+				view.printMessage("--------- \nVideo Trending por categoría: \nnombre de la categoría?");
+				category_name = lector.next();
+				System.out.println(category_name);
+				res = modelo.req3(category_name);
 				view.printMessage(res);
 				break;
 
 			case 4:
-				view.printMessage("--------- \nBusequdas Aleatoias Linear probing?");
-				res = modelo.req4();
+				view.printMessage("--------- \nEtiqueta del video?");
+				tag = lector.next();
+				view.printMessage("--------- \nnumero de registros?");
+				n = lector.next();
+				System.out.println(country + " " + " " + Integer.parseInt(n) + " " + tag);
+				res = modelo.req4(tag, Integer.parseInt(n));
 				view.printMessage(res);
 				break;
 
